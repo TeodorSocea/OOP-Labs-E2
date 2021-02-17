@@ -11,7 +11,7 @@ int char_to_int(char *buffer){
 }
 
 int main(){
-    FILE *fptr = fopen("in.txt", "rw");
+    FILE *fptr = fopen("in.txt", "r");
     if(fptr == NULL){
         printf("File open failed.");
         return 0;
