@@ -2,7 +2,7 @@
 #include <cstring>
 using namespace std;
 int main(){
-    FILE *fptr = fopen("input.in", "rw");
+    FILE *fptr = fopen("in.txt", "rw");
     if(fptr == NULL){
         cout<<"File open failed.";
         return 0;
