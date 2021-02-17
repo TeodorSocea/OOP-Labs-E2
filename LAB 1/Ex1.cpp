@@ -1,10 +1,9 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-int char_to_int(char *buffer){
+int char_to_int(char buffer[]){
     int output = 0;
     for(int i = 0; i < strlen(buffer); i++){
-        printf("%c", buffer[i]);
         output = (buffer[i]-'0') + output*10;
     }
     return output;
@@ -17,14 +16,13 @@ int main(){
         return 0;
     }
     else{
-        char *buffer;
+        printf("File open successful.");
+        char buffer[100];
         int sum = 0;
-        fgets(buffer, 100, fptr);
-        printf("%c", *buffer);
-        while(!feof(fptr)){
+        while(fgets(buffer, 100, fptr)!=NULL){
             sum += char_to_int(buffer);
-            fgets(buffer, 100, fptr);
         }
+        fclose(fptr);
         printf("%d", sum);
         return 0;
     }
