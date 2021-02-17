@@ -1,5 +1,5 @@
 #include <iostream>
 using namespace std;
 int main(){
-    FILE *fptr = fopen("input.in");
+    FILE *fptr = fopen("input.in", "rw");
 }
