@@ -18,6 +18,7 @@ int main(){
     }
     else{
         char *buffer;
+        int sum = 0;
         fgets(buffer, 100, fptr);
         while(!feof(fptr)){
             
