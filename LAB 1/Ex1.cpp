@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 int main(){
     FILE *fptr = fopen("input.in", "rw");
