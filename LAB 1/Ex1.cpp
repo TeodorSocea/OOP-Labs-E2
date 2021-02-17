@@ -2,10 +2,10 @@
 #include <cstring>
 using namespace std;
 int char_to_int(char *buffer){
-    int p = 1, output = 0;
+    int output = 0;
     for(int i = 0; i < strlen(buffer); i++){
-        output = p * (buffer[i]-'0') + output;
-        p *= 10;
+        printf("%c", buffer[i]);
+        output = (buffer[i]-'0') + output*10;
     }
     return output;
 }
@@ -20,6 +20,7 @@ int main(){
         char *buffer;
         int sum = 0;
         fgets(buffer, 100, fptr);
+        printf("%c", *buffer);
         while(!feof(fptr)){
             sum += char_to_int(buffer);
             fgets(buffer, 100, fptr);
