@@ -21,7 +21,10 @@ int main(){
         int sum = 0;
         fgets(buffer, 100, fptr);
         while(!feof(fptr)){
-            
+            sum += char_to_int(buffer);
+            fgets(buffer, 100, fptr);
         }
+        printf("%d", sum);
+        return 0;
     }
 }
