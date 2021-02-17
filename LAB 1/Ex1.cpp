@@ -20,7 +20,8 @@ int main(){
         printf("File open successful.\n");
         char buffer[100];
         int sum = 0;
-        while(fgets(buffer, 100, fptr)!=NULL){
+        fgets(buffer, 100, fptr);
+        while(feof(fptr)){
             sum += char_to_int(buffer);
         }
         fclose(fptr);
