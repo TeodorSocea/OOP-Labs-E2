@@ -15,5 +15,5 @@ class Student{
         float getMath();
         float getEng();
         float getHis();
-        float getAbg();
+        float getAvg();
 };

@@ -35,3 +35,8 @@ float Student::getEng(){
 float Student::getHis(){
     return this->grades.his;
 }
+
+float Student::getAvg(){
+    this->avg = (this->grades.math + this->grades.eng + this->grades.his) / 3;
+    return this->avg;
+}
