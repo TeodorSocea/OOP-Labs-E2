@@ -20,4 +20,20 @@ int main(){
     s1.setHis(grade);
 
     s1.printGrades();
+
+    printf("Let's create a another student! What is his name: ");
+    scanf("%s", name);
+    s2.setName(name);
+    printf("Math grade: ");
+    scanf("%f", &grade);
+    s2.setMath(grade);
+    printf("English grade: ");
+    scanf("%f", &grade);
+    s2.setEng(grade);
+    printf("History grade: ");
+    scanf("%f", &grade);
+    s2.setHis(grade);
+
+    s2.printGrades();
+
 }
