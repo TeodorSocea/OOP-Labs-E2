@@ -20,3 +20,9 @@ int cmpName(Student a, Student b){
 int cmpMath(Student a, Student b){
     return a.getMath() > b.getMath() ? 1 : -1;
 }
+int cmpEng(Student a, Student b){
+    return a.getEng() > b.getEng() ? 1 : -1;
+}
+int cmpHis(Student a, Student b){
+    return a.getHis() > b.getHis() ? 1 : -1;
+}
