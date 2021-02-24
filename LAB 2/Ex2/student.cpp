@@ -11,3 +11,13 @@ void Student::setMath(float x){
         return;
     this->grades.math = x;
 }
+void Student::setEng(float x){
+    if(x < 0 || x > 10)
+        return;
+    this->grades.eng = x;
+}
+void Student::setHis(float x){
+    if(x < 0 || x > 10)
+        return;
+    this->grades.his = x;
+}
