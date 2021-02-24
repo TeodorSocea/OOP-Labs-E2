@@ -26,3 +26,7 @@ int cmpEng(Student a, Student b){
 int cmpHis(Student a, Student b){
     return a.getHis() > b.getHis() ? 1 : -1;
 }
+
+int cmpAvg(Student a, Student b){
+    return a.getAvg() > b.getAvg() ? 1 : -1;
+}
