@@ -15,3 +15,13 @@ bool NumberList::Add(int x){
     else
         return false;
 }
+
+void NumberList::Sort(){
+    for(int i = 0; i < this->count -1 ; i++){
+        for(int j = i+1; j  < this->count; j++){
+            if(this->numbers[i] > this->numbers[j]){
+                
+            }
+        }
+    }
+}
