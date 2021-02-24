@@ -16,3 +16,7 @@ int cmpName(Student a, Student b){
     }
     return nameA[i] == '\0' ? -1 : 1;
 }
+
+int cmpMath(Student a, Student b){
+    return a.getMath() > b.getMath() ? 1 : -1;
+}
