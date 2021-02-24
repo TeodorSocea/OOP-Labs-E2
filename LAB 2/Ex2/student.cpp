@@ -21,3 +21,7 @@ void Student::setHis(float x){
         return;
     this->grades.his = x;
 }
+
+char* Student::getName(){
+    return this->name;
+}
