@@ -29,3 +29,9 @@ char* Student::getName(){
 float Student::getMath(){
     return this->grades.math;
 }
+float Student::getEng(){
+    return this->grades.eng;
+}
+float Student::getHis(){
+    return this->grades.his;
+}
