@@ -1,10 +1,11 @@
 #include "global.hpp"
 #include <stdio.h>
+#include <iostream>
 int main(){
     Student s1, s2;
-    char* name;
+    char name[40];
     float grade;
-    
+    int len;
     printf("Let's create a student! What is his name: ");
     scanf("%s", name);
     s1.setName(name);

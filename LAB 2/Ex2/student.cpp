@@ -42,5 +42,6 @@ float Student::getAvg(){
 }
 
 void Student::printGrades(){
-    printf("Name: %s. Math: %f English: %f History: %f\n", this->name, this->grades.math, this->grades.eng, this->grades.his);
+    
+    printf("Name: %s. Math: %.2f English: %.2f History: %.2f Averege: %.2f\n", this->name, this->grades.math, this->grades.eng, this->grades.his, this->getAvg());
 }
