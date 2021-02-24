@@ -40,3 +40,7 @@ float Student::getAvg(){
     this->avg = (this->grades.math + this->grades.eng + this->grades.his) / 3;
     return this->avg;
 }
+
+void Student::printGrades(){
+    printf("Name: %s. Math: %f English: %f History: %f\n", this->name, this->grades.math, this->grades.eng, this->grades.his);
+}

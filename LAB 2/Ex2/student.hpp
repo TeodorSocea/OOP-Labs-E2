@@ -16,4 +16,6 @@ class Student{
         float getEng();
         float getHis();
         float getAvg();
+
+        void printGrades();
 };
