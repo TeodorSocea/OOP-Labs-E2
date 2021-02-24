@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <iostream>
 int main(){
-    Student s1, s2;
+    Student s1;
+    Student s2;
     char name[40];
     float grade;
-    int len;
     printf("Let's create a student! What is his name: ");
     scanf("%s", name);
     s1.setName(name);
@@ -19,11 +19,13 @@ int main(){
     scanf("%f", &grade);
     s1.setHis(grade);
 
-    s1.printGrades();
+    
 
     printf("Let's create a another student! What is his name: ");
     scanf("%s", name);
     s2.setName(name);
+    printf("%s", s1.getName());
+    printf("%s", s2.getName());
     printf("Math grade: ");
     scanf("%f", &grade);
     s2.setMath(grade);
@@ -35,5 +37,10 @@ int main(){
     s2.setHis(grade);
 
     s2.printGrades();
+    s1.printGrades();
+    
+    printf("%s", s1.getName());
+
+    printf("%d", cmpName(s1, s2));
 
 }
