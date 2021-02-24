@@ -7,3 +7,4 @@ class NumberList{
         void Sort();
         void Print();
 };
+void swap(int*, int*);
