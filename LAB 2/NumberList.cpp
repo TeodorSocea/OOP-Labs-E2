@@ -25,3 +25,9 @@ void NumberList::Sort(){
         }
     }
 }
+void NumberList::Print(){
+    for(int i = 0; i < this->count; i++){
+        printf("%d ", this->numbers[i]);
+        printf("\n");
+    }
+}
