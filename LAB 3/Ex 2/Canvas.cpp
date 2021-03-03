@@ -26,8 +26,22 @@ void Canvas::SetPoint(int x, int y, char ch){
 void Canvas::Print(){
     for(int i = 0; i < this->height; i++){
         for(int j = 0; j < this->width; j++){
-            printf("%c", this->board[i][j]);
+            printf("%c ", this->board[i][j]);
         }
         printf("\n");
+    }
+}
+
+int distance(int x, int y, int i, int j){
+    return sqrt((x-i)*(x-i)+(y-j)*(y-j));
+}
+
+void Canvas::DrawCircle(int x, int y, int ray, char ch){
+    for(int i = 0; i < this->height; i++){
+        for(int j = 0; j < this->width; j++){
+            if(distance(x, y, i, j) == ray){
+                this->SetPoint(i, j, ch);
+            }
+        }
     }
 }

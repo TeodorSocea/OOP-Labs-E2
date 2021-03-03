@@ -3,9 +3,8 @@
 using namespace std;
 
 int main(){
-    Canvas C(20, 10);
-    C.Clear();
-    C.Print();
-    C.SetPoint(9, 5, 'T');
+    Canvas C(20, 20);
+    C.SetPoint(0, 0, '*');
+    C.DrawCircle(10, 10, 7, '*');
     C.Print();
 }
