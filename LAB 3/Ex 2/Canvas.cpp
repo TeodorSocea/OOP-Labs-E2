@@ -1,6 +1,14 @@
 #include "Canvas.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+void Canvas::Clear(){
+    for(int i = 0; i < this->height; i++)
+        for(int j = 0; j < this->width; j++){
+            this->SetPoint(i, j, ' ');
+        }
+}
+
 Canvas::Canvas(int width, int height){
     this->width = width;
     this->height = height;
@@ -8,7 +16,7 @@ Canvas::Canvas(int width, int height){
     for(int i = 0; i < height; i++)
         mat[i] = (char *)malloc(width * sizeof(char));
     this->board = mat;
-    delete(mat);
+    this->Clear();
 }
 
 void Canvas::SetPoint(int x, int y, char ch){
@@ -16,14 +24,10 @@ void Canvas::SetPoint(int x, int y, char ch){
 }
 
 void Canvas::Print(){
-    for(int i = 0; i < this->height; i++)
+    for(int i = 0; i < this->height; i++){
         for(int j = 0; j < this->width; j++){
             printf("%c", this->board[i][j]);
         }
-}
-void Canvas::Clear(){
-    for(int i = 0; i < this->height; i++)
-        for(int j = 0; j < this->width; j++){
-            this->board[i][j] = ' ';
-        }
+        printf("\n");
+    }
 }

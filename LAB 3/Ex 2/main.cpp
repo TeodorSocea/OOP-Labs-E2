@@ -3,9 +3,9 @@
 using namespace std;
 
 int main(){
-    Canvas C(10, 10);
+    Canvas C(20, 10);
     C.Clear();
     C.Print();
-    C.SetPoint(5, 5, 'T');
+    C.SetPoint(9, 5, 'T');
     C.Print();
 }
