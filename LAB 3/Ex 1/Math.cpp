@@ -7,3 +7,11 @@ int Math::Add(int a, int b){
 int Math::Add(int a, int b, int c){
     return a + b + c;
 }
+
+int Math::Add(double a, double b){
+    return a + b;
+}
+
+int Math::Add(double a, double b, double c){
+    return a + b + c;
+}
