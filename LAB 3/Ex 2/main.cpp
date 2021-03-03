@@ -4,7 +4,6 @@ using namespace std;
 
 int main(){
     Canvas C(20, 20);
-    C.SetPoint(0, 0, '*');
-    C.DrawCircle(10, 10, 7, '*');
+    C.DrawRect(0, 5, 19, 19, '*');
     C.Print();
 }

@@ -45,3 +45,19 @@ void Canvas::DrawCircle(int x, int y, int ray, char ch){
         }
     }
 }
+
+void Canvas::DrawRect(int left, int top, int right, int bottom, char ch){
+    int minx = left < right ? left : right;
+    int maxx = left > right ? left : right;
+    int miny = top < bottom ? top : bottom;
+    int maxy = top > bottom ? top : bottom;
+
+    for(int i = minx; i < maxx; i++){
+        for(int j = miny; j < maxy; j++){
+            if(i == minx || i == maxx-1)
+                this->SetPoint(i, j, ch);
+            else if(j == miny || j == maxy-1)
+                this->SetPoint(i, j, ch);
+        }
+    }
+}
