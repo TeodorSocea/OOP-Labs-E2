@@ -36,6 +36,18 @@ public:
     Sort(int...);
     Sort(char *);
 
+    ~Sort(){
+        delete[] data;
+    }
+
+    Sort(const Sort& old_elements){
+        count = old_elements.count;
+        data = new int[count];
+        for(int i = 0; i < count; i++){
+            data[i] = old_elements.data[i];
+        }
+    }
+
     void InsertSort(bool ascendent = false);
 
     void QuickSort(bool ascendent = false);
