@@ -57,5 +57,17 @@ Sort::Sort(int count...){
 }
 
 Sort::Sort(char *input_string){
-
+    this->count = getNumbersCountFromInputString(input_string);
+    this->data = new int[this->count];
+    int k = 0, num = 0;
+    for (int i = 0; i <= strlen(input_string); i++)
+    {
+        if (input_string[i] == ',' || input_string[i] == '\0')
+        {
+            data[k++] = num;
+            num = 0;
+        }
+        else if (iswdigit(input_string[i]))
+            num = num * 10 + (input_string[i] - '0');
+    }
 }
