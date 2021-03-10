@@ -24,6 +24,6 @@ public:
 
     int  GetElementsCount();
 
-    int  GetElementFromIndex(int index);
+    int  GetElementFromIndex(int);
 
 };

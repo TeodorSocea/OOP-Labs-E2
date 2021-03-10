@@ -11,4 +11,6 @@ int Sort::GetElementsCount(){
     return this->count;
 }
 
-
+int Sort::GetElementFromIndex(int index){
+    return this->data[index];
+}
