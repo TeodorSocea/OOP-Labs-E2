@@ -12,6 +12,13 @@ int getNumbersCountFromInputString(char * input_string){
     return count_output;
 }
 
+void swap(int *a, int *b)
+{
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
 void Sort::Print(){
     for(int i = 0 ; i < this->count; i++)
         printf("%d ", this->data[i]);
@@ -102,4 +109,20 @@ void Sort::InsertSort(bool ascendent)
             this->data[j + 1] = key;
         }
     }
+}
+
+void Sort::BubbleSort(bool ascendent)
+{
+    for (int i = 0; i < this->count - 1; i++)
+        for (int j = 0; j < this->count - i - 1; j++)
+            if (ascendent)
+            {
+                if (this->data[j] > this->data[j + 1])
+                    swap(&this->data[j], &this->data[j + 1]);
+            }
+            else
+            {
+                if (this->data[j] < this->data[j + 1])
+                    swap(&this->data[j], &this->data[j + 1]);
+            }
 }

@@ -4,7 +4,7 @@ class Sort
 
 {
 
-    int *data, count;
+    int count, *data; 
 
 public:
 
@@ -40,3 +40,4 @@ public:
 };
 
 int getNumbersCountFromInputString(char *);
+void swap(int*, int*);

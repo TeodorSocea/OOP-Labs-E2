@@ -8,6 +8,6 @@ int main(){
     elements.Print();
     elements = elements+5;
     elements.Print();
-    elements.InsertSort();
+    elements.BubbleSort();
     elements.Print();
 }
