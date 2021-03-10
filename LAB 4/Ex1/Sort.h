@@ -27,3 +27,5 @@ public:
     int  GetElementFromIndex(int);
 
 };
+
+int getNumbersCountFromInputString(char*);

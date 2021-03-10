@@ -4,6 +4,14 @@
 #include <iterator>
 #include <cstdarg>
 
+int getNumbersCountFromInputString(char * input_string){
+    int count_output = 1;
+    for (int i = 0; i < strlen(input_string); i++)
+        if (input_string[i] == ',')
+            count_output++;
+    return count_output;
+}
+
 void Sort::Print(){
     for(int i = 0 ; i < this->count; i++)
         printf("%d ", this->data[i]);
@@ -46,4 +54,8 @@ Sort::Sort(int count...){
     for(int i = 0 ; i < this->count; i++)
         this->data[i] = va_arg(args, int);
     va_end(args);
-}   
+}
+
+Sort::Sort(char *input_string){
+
+}
