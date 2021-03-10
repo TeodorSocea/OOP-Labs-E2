@@ -71,3 +71,35 @@ Sort::Sort(char *input_string){
             num = num * 10 + (input_string[i] - '0');
     }
 }
+
+void Sort::InsertSort(bool ascendent)
+{
+    if (ascendent)
+    {
+        for (int i = 1; i < this->count; i++)
+        {
+            int key = this->data[i];
+            int j = i - 1;
+            while (j >= 0 && this->data[j] > key)
+            {
+                this->data[j + 1] = this->data[j];
+                j = j - 1;
+            }
+            this->data[j + 1] = key;
+        }
+    }
+    else
+    {
+        for (int i = 1; i < this->count; i++)
+        {
+            int key = this->data[i];
+            int j = i - 1;
+            while (j >= 0 && this->data[j] < key)
+            {
+                this->data[j + 1] = this->data[j];
+                j = j - 1;
+            }
+            this->data[j + 1] = key;
+        }
+    }
+}

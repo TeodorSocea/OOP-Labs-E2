@@ -7,6 +7,7 @@ class Sort
     int *data, count;
 
 public:
+
     Sort operator+(int number_to_add)
     {
         Sort output_elements(this->count, this->data);
