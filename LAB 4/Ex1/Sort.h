@@ -8,6 +8,16 @@ class Sort
 
 public:
 
+    friend Sort operator+(int number_to_add, const Sort &input){
+        int *new_arr = new int[input.count + 1];
+        new_arr[0] = number_to_add;
+        for(int i = 1; i < input.count + 1; i++){
+            new_arr[i] = input.data[i-1];
+        }
+        Sort output(input.count+1, new_arr);
+        return output;
+    }
+
     Sort operator+(int number_to_add)
     {
         Sort output_elements(this->count, this->data);

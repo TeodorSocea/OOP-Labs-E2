@@ -10,4 +10,6 @@ int main(){
     elements.Print();
     elements.BubbleSort();
     elements.Print();
+    elements = 10 + elements;
+    elements.Print();
 }
