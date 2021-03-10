@@ -3,6 +3,6 @@
 using namespace std;
 
 int main(){
-    Sort elements(10, 0, 10);
+    Sort elements = {1, 2, 3, 4, 5, 6, 7, 8};
     elements.Print();
 }
