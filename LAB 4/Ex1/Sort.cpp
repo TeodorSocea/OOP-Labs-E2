@@ -19,7 +19,7 @@ int Sort::GetElementFromIndex(int index){
 
 Sort::Sort(int count, int mini, int maxi){
     this->count = count;
-    this->data = new int[count];
+    this->data = new int[this->count];
     for(int i = 0 ; i < this->count; i++){
         this->data[i] = rand() % (maxi - mini + 1) + mini; 
     }
@@ -28,4 +28,11 @@ Sort::Sort(int count, int mini, int maxi){
 Sort::Sort(std::initializer_list<int> list) : data(new int[list.size()]){
     std::copy(std::begin(list), std::end(list), this->data);
     this->count = list.size();
+}
+
+Sort::Sort(int count, int* input_array){
+    this->count = count;
+    this->data = new int[this->count];
+    for(int i = 0; i < this->count; i++)
+        this->data[i] = input_array[i];
 }
