@@ -18,3 +18,17 @@ Number::Number(const Number &n)
     this->value = n.value;
     this->base = n.base;
 }
+
+Number::Number(Number &&n)
+{
+    this->value = n.value;
+    this->base = n.base;
+    delete &n.value;
+    delete &n;
+}
+
+Number::~Number()
+{
+    delete[] this->value;
+    delete[] this;
+}
