@@ -14,6 +14,8 @@ public:
 
     Number(Number &&n);
 
+    void operator=(Number &n);
+
     void SwitchBase(int newBase);
 
     void Print();

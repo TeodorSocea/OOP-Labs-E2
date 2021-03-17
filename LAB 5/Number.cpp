@@ -32,3 +32,19 @@ Number::~Number()
     delete[] this->value;
     delete[] this;
 }
+
+void Number::operator=(Number &n)
+{
+    this->value = n.value;
+    this->base = n.base;
+}
+
+int Number::GetDigitsCount()
+{
+    return strlen(this->value);
+}
+
+int Number::GetBase()
+{
+    return this->base;
+}
