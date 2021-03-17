@@ -14,7 +14,29 @@ public:
 
     Number(Number &&n);
 
+    void setValue(const char *);
+
+    char *getValue();
+
     void operator=(Number &n);
+
+    friend void operator+(Number &a, Number b);
+
+    friend void operator-(Number &n);
+
+    void operator!();
+
+    char operator[](int);
+
+    int operator>(Number &n);
+
+    int operator<(Number &n);
+
+    int operator>=(Number &n);
+
+    int operator<=(Number &n);
+
+    int operator==(Number &n);
 
     void SwitchBase(int newBase);
 

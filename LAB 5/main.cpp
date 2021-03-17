@@ -3,8 +3,11 @@
 int main()
 {
 
-    Number a("111", 2);
+    Number a("110", 2);
     a.Print();
-    a.SwitchBase(10);
+    Number b("1002", 2);
+    b.Print();
+    b.SwitchBase(10);
+    b.Print();
     a.Print();
 }
