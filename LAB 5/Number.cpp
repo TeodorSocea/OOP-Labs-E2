@@ -12,3 +12,9 @@ void Number::Print()
 {
     printf("Base: %d, Value: %s\n", this->base, this->value);
 }
+
+Number::Number(const Number &n)
+{
+    this->value = n.value;
+    this->base = n.base;
+}
