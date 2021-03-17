@@ -21,4 +21,4 @@ public:
     int GetDigitsCount(); // returns the number of digits for the current number
 
     int GetBase(); // returns the current base
-}
+};
