@@ -7,7 +7,6 @@ class Car
     char *name;
 
 public:
-    char *name;
     virtual int CalculateScore(int, Weather) = 0;
     virtual void SetFuelCapacity(int) = 0;
     virtual void SetFuelConsumption(int) = 0;
