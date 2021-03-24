@@ -2,11 +2,11 @@
 #define DACIA_H
 
 #include "Car.h"
-
+#include <cstring>
 class Dacia : public Car
 {
     int fuelCapacity, fuelConsumption, avgSpeed;
-    char *name;
+    int id;
 
 public:
     Dacia();

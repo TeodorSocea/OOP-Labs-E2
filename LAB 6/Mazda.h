@@ -6,7 +6,7 @@
 class Mazda : public Car
 {
     int fuelCapacity, fuelConsumption, avgSpeed;
-    char *name;
+    int id;
 
 public:
     Mazda();

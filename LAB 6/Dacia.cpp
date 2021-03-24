@@ -17,6 +17,7 @@ Dacia::Dacia()
     this->SetFuelCapacity(100);
     this->SetFuelConsumption(2);
     this->SetAvgSpeed(2);
+    this->id = 1;
 }
 int Dacia::CalculateScore(int length, Weather w)
 {

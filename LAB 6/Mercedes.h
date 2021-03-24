@@ -6,7 +6,7 @@
 class Mercedes : public Car
 {
     int fuelCapacity, fuelConsumption, avgSpeed;
-    char *name;
+    int id;
 
 public:
     Mercedes();
