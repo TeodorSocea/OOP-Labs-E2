@@ -6,9 +6,9 @@
 class Toyota : public Car
 {
     int fuelCapacity, fuelConsumption, avgSpeed;
+    char *name;
 
 public:
-    const char *name = "Toyota";
     Toyota();
     void SetFuelCapacity(int);
     void SetFuelConsumption(int);
