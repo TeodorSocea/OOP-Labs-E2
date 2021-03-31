@@ -130,4 +130,18 @@ public:
                     std::swap(this->elements[i], this->elements[j]);
                 }
     }
+    int firstIndexOf(T elem)
+    {
+        for (int i = 0; i < this->elements_number; i++)
+            if (this->elements[i] == elem)
+                return i;
+        throw "Elem not found";
+    }
+    int firstIndexOf(T elem, T(fnd)(T))
+    {
+        for (int i = 0; i < this->elements_number; i++)
+            if (fnd(this->elements[i]) == elem)
+                return i;
+        throw "Elem not found";
+    }
 };
