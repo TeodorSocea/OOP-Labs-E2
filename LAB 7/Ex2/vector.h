@@ -98,4 +98,10 @@ public:
         const T &output = this->elements[index];
         return output;
     }
+    const T &operator[](int index)
+    {
+        if (this->elements_number <= index)
+            throw "No element at index";
+        return &this->elements[index];
+    }
 };
