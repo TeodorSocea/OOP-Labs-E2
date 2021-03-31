@@ -16,4 +16,11 @@ public:
     {
         delete[] this->elements;
     }
+    vector(const vector &v)
+    {
+        this->size = v.size;
+        this->elements_number = v.elements_number;
+        this->elements = new T[this->size];
+        std::memcpy(this->elemenst, v.elements, v.elements_number * sizeof(T));
+    }
 };
