@@ -12,4 +12,8 @@ public:
         this->elements_number = 0;
         this->elements = new T[size];
     }
+    ~vector()
+    {
+        delete[] this->elements;
+    }
 };
