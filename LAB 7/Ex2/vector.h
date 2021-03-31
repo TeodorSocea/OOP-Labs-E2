@@ -91,4 +91,11 @@ public:
         std::memcpy(this->elements + index + 1, this->elements + index, (this->elements_number++ - index) * sizeof(T));
         this->elements[index] = elem;
     }
+    const T &get(int index)
+    {
+        if (this->elements_number <= index)
+            throw "No element at index";
+        const T &output = this->elements[index];
+        return output;
+    }
 };
