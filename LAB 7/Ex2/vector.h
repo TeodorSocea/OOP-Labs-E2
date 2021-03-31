@@ -33,4 +33,17 @@ public:
         v.elements_number = 0;
         delete[] v.elements;
     }
+    void push(T elem)
+    {
+        if (this->elements_number == this->size)
+        {
+            int newSize = this->size * 2;
+            T *auxElements = new T[newSize];
+            std::memcpy(auxElements, this->elements, this->elements_number * sizeof(T));
+            delete[] this->elements;
+            this->size = newSize;
+            this->elements = auxElements;
+        }
+        this->elements[this->elements_number++] = elem;
+    }
 };
