@@ -104,4 +104,12 @@ public:
             throw "No element at index";
         return &this->elements[index];
     }
+    void set(T obj, int index)
+    {
+        this->elements[index] = obj;
+    }
+    int count()
+    {
+        return this->elements_number;
+    }
 };
