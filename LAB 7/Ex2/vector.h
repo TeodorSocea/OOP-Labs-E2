@@ -62,4 +62,19 @@ public:
         }
         return output;
     }
+    void remove(int index)
+    {
+        if (this->elements_number <= index)
+            throw "No element at index";
+        std::memcpy(this->elements + index, this->elements + index + 1, (--this->elements_number - index) * sizeof(T));
+        if (this->elements_number * 2 == this->size)
+        {
+            int newSize = this->size / 2;
+            T *auxElements = new T[newSize];
+            std::memcpy(auxElements, this->elements, this->elements_number * sizeof(T));
+            delete[] this->elements;
+            this->size = newSize;
+            this->elements = auxElements;
+        }
+    }
 };
