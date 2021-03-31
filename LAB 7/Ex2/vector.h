@@ -33,7 +33,7 @@ public:
         v.elements_number = 0;
         delete[] v.elements;
     }
-    void push(T elem)
+    void push(const T &elem)
     {
         if (this->elements_number == this->size)
         {
@@ -77,7 +77,7 @@ public:
             this->elements = auxElements;
         }
     }
-    void insert(T elem, int index)
+    void insert(const T &elem, int index)
     {
         if (this->elements_number == this->size)
         {
@@ -102,7 +102,8 @@ public:
     {
         if (this->elements_number <= index)
             throw "No element at index";
-        return &this->elements[index];
+        const T &output = this->elements[index];
+        return output;
     }
     void set(T obj, int index)
     {
@@ -125,7 +126,7 @@ public:
     {
         for (int i = 0; i < this->elements_number; i++)
             for (int j = i + 1; j < this->elements_number; j++)
-                if (cmp(this->elements[i], this->elements[j]))
+                if (cmp(this->elements[i], this->elements[j]) == 1)
                 {
                     std::swap(this->elements[i], this->elements[j]);
                 }
@@ -137,10 +138,10 @@ public:
                 return i;
         throw "Elem not found";
     }
-    int firstIndexOf(T elem, T(fnd)(T))
+    int firstIndexOf(T elem, int(fnd)(T, T))
     {
         for (int i = 0; i < this->elements_number; i++)
-            if (fnd(this->elements[i]) == elem)
+            if (fnd(this->elements[i], elem) == 1)
                 return i;
         throw "Elem not found";
     }
