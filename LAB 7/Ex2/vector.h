@@ -23,4 +23,14 @@ public:
         this->elements = new T[this->size];
         std::memcpy(this->elemenst, v.elements, v.elements_number * sizeof(T));
     }
+    vector(vector &&v)
+    {
+        this->size = v.size;
+        this->elements_number = v.elements_number;
+        this->elements = new T[this->size];
+        std::memcpy(this->elemenst, v.elements, v.elements_number * sizeof(T));
+        v.size = 0;
+        v.elements_number = 0;
+        delete[] v.elements;
+    }
 };
