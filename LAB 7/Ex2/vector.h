@@ -46,4 +46,20 @@ public:
         }
         this->elements[this->elements_number++] = elem;
     }
+    T pop()
+    {
+        if (this->elements_number == 0)
+            throw "Empty vector";
+        T output = this->elements[--this->elements_number];
+        if (this->elements_number * 2 == this->size)
+        {
+            int newSize = this->size / 2;
+            T *auxElements = new T[newSize];
+            std::memcpy(auxElements, this->elements, this->elements_number * sizeof(T));
+            delete[] this->elements;
+            this->size = newSize;
+            this->elements = auxElements;
+        }
+        return output;
+    }
 };
