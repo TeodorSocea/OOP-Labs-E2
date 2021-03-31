@@ -112,4 +112,22 @@ public:
     {
         return this->elements_number;
     }
+    void sort()
+    {
+        for (int i = 0; i < this->elements_number; i++)
+            for (int j = i + 1; j < this->elements_number; j++)
+                if (this->elements[i] > this->elements[j])
+                {
+                    std::swap(this->elements[i], this->elements[j]);
+                }
+    }
+    void sort(int(cmp)(T, T))
+    {
+        for (int i = 0; i < this->elements_number; i++)
+            for (int j = i + 1; j < this->elements_number; j++)
+                if (cmp(this->elements[i], this->elements[j]))
+                {
+                    std::swap(this->elements[i], this->elements[j]);
+                }
+    }
 };
