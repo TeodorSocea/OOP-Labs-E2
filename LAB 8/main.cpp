@@ -8,6 +8,11 @@
 #include <utility>
 #include <queue>
 
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+using std::cout;
 using std::ifstream;
 using std::map;
 using std::pair;
@@ -56,26 +61,44 @@ public:
     };
 };
 
+void print(priority_queue<pair<string, int>, vector<pair<string, int>>, cmp> &pqueue)
+{
+    while (!pqueue.empty())
+    {
+        pair<string, int> word = pqueue.top();
+        cout << word.first << " => " << word.second << '\n';
+        pqueue.pop();
+    }
+}
+
 int main()
 {
-    string phrase;
-    getline(in, phrase);
-
-    regex re(R"([\s|,|.|?|!]+)");
-
-    vector<string> words = parsePhrase(phrase, re);
-
-    for (auto word : words)
     {
-        std::cout << word << '\n';
+        string phrase;
+        getline(in, phrase);
+
+        regex re(R"([\s|,|.|?|!]+)");
+
+        vector<string> words = parsePhrase(phrase, re);
+
+        for (auto word : words)
+        {
+            std::cout << word << '\n';
+        }
+        cout << '\n';
+
+        map<string, int> words_map = generateCaseInsesitiveMap(words);
+
+        for (auto it = words_map.begin(); it != words_map.end(); it++)
+        {
+            std::cout << it->first << " " << it->second << '\n';
+        }
+        cout << '\n';
+
+        priority_queue<pair<string, int>, vector<pair<string, int>>, cmp> sorted_words(words_map.begin(), words_map.end());
+
+        print(sorted_words);
     }
-
-    map<string, int> words_map = generateCaseInsesitiveMap(words);
-
-    for (auto it = words_map.begin(); it != words_map.end(); it++)
-    {
-        std::cout << it->first << " " << it->second << '\n';
-    }
-
-    priority_queue<pair<string, int>, vector<pair<string, int>>, cmp> sorted_words(words_map.begin(), words_map.end());
+    _CrtDumpMemoryLeaks();
+    return 0;
 }
