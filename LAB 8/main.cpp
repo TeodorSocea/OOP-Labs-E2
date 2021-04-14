@@ -7,12 +7,14 @@
 #include <map>
 #include <utility>
 #include <queue>
+#include <deque>
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
 
 using std::cout;
+using std::deque;
 using std::ifstream;
 using std::map;
 using std::pair;
@@ -61,7 +63,7 @@ public:
     };
 };
 
-void print(priority_queue<pair<string, int>, vector<pair<string, int>>, cmp> &pqueue)
+void print(priority_queue<pair<string, int>, deque<pair<string, int>>, cmp> &pqueue)
 {
     while (!pqueue.empty())
     {
@@ -95,7 +97,7 @@ int main()
         }
         cout << '\n';
 
-        priority_queue<pair<string, int>, vector<pair<string, int>>, cmp> sorted_words(words_map.begin(), words_map.end());
+        priority_queue<pair<string, int>, deque<pair<string, int>>, cmp> sorted_words(words_map.begin(), words_map.end());
 
         print(sorted_words);
     }
