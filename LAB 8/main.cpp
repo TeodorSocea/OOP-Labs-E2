@@ -5,9 +5,13 @@
 #include <iterator>
 #include <regex>
 #include <map>
+#include <utility>
+#include <queue>
 
 using std::ifstream;
 using std::map;
+using std::pair;
+using std::priority_queue;
 using std::regex;
 using std::remove_if;
 using std::sregex_token_iterator;
@@ -38,6 +42,20 @@ map<string, int> generateCaseInsesitiveMap(const vector<string> &words)
     return output;
 }
 
+class cmp
+{
+public:
+    bool operator()(const pair<string, int> &a, const pair<string, int> &b) const
+    {
+        if (a.second < b.second)
+            return true;
+        else if (a.second == b.second)
+            return a.first > b.first;
+        else
+            return false;
+    };
+};
+
 int main()
 {
     string phrase;
@@ -52,10 +70,12 @@ int main()
         std::cout << word << '\n';
     }
 
-    map<string, int> words_maps = generateCaseInsesitiveMap(words);
+    map<string, int> words_map = generateCaseInsesitiveMap(words);
 
-    for (auto it = words_maps.begin(); it != words_maps.end(); it++)
+    for (auto it = words_map.begin(); it != words_map.end(); it++)
     {
         std::cout << it->first << " " << it->second << '\n';
     }
+
+    priority_queue<pair<string, int>, vector<pair<string, int>>, cmp> sorted_words(words_map.begin(), words_map.end());
 }
