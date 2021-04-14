@@ -32,9 +32,6 @@ vector<string> parsePhrase(const string &str, const regex &re)
 {
     sregex_token_iterator it(str.begin(), str.end(), re, -1);
     vector<string> parsed(it, {});
-
-    parsed.erase(remove_if(parsed.begin(), parsed.end(), [](string const &s) { return s.size() == 0; }), parsed.end());
-
     return parsed;
 }
 
