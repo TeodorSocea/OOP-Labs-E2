@@ -12,7 +12,8 @@
 				"/nologo",
 				"/Fe:",
 				"${fileDirname}\\Program.exe",
-				"${fileDirname}\\*.cpp"
+				"${fileDirname}\\*.cpp",
+				"/std:c++17"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
