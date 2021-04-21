@@ -24,7 +24,6 @@ private:
         int index;
         Tie(K _key, V _value, int _index) : key(_key), value(_value), index(_index)
         {
-            printf("Index:%d, Key=%d, Value=%s\n", index, key, value);
         }
     };
     class MapIterator
@@ -46,9 +45,9 @@ private:
         {
             ++index;
         }
-        auto operator*()
+        const Tie &operator*()
         {
-            return std::tie(MapEntriesClone[index].first, MapEntriesClone[index].second, index);
+            return Tie(MapEntriesClone[index].first, MapEntriesClone[index].second, index);
         }
     };
     // map class members
