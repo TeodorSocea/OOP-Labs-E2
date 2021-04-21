@@ -18,6 +18,16 @@ private:
     public:
         MapIterator(const MapEntry *MapEntries, int _index) : MapEntriesClone(MapEntries), index(_index) {}
         MapIterator(int _index) : MapEntriesClone(nullptr), index(_index) {}
+        bool operator!=(const MapIterator &_MapIterator)
+        {
+            if (index != _MapIterator.index)
+                return true;
+            return false;
+        }
+        void operator++()
+        {
+            ++index;
+        }
     };
     // map class members
     MapEntry *MapEntries;
