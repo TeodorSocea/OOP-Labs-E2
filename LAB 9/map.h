@@ -8,6 +8,7 @@ private:
         K first;
         V second;
         MapEntry(K key, V value) : first(key), second(value) {}
+        MapEntry() = default;
     };
     class tie
     {
@@ -35,6 +36,10 @@ private:
         void operator++()
         {
             ++index;
+        }
+        const tie &operator*()
+        {
+            return tie(MapEntriesClone[index].first, MapEntriesClone[index].second, index);
         }
     };
     // map class members
