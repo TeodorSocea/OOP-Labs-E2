@@ -9,6 +9,14 @@ private:
         V second;
         MapEntry(K key, V value) : first(key), second(value) {}
     };
+    class tie
+    {
+    public:
+        K key;
+        V value;
+        int index;
+        tie(K _key, V _value, int _index) : key(_key), value(_value), index(_index) {}
+    };
     class MapIterator
     {
     private:
