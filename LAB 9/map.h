@@ -1,3 +1,5 @@
+#include <cstring>
+#include <tuple>
 template <class K, class V>
 class Map
 {
@@ -9,14 +11,21 @@ private:
         V second;
         MapEntry(K key, V value) : first(key), second(value) {}
         MapEntry() = default;
+        void operator=(V value)
+        {
+            second = value;
+        }
     };
-    class tie
+    class Tie
     {
     public:
         K key;
         V value;
         int index;
-        tie(K _key, V _value, int _index) : key(_key), value(_value), index(_index) {}
+        Tie(K _key, V _value, int _index) : key(_key), value(_value), index(_index)
+        {
+            printf("Index:%d, Key=%d, Value=%s\n", index, key, value);
+        }
     };
     class MapIterator
     {
@@ -25,7 +34,7 @@ private:
         int index;
 
     public:
-        MapIterator(const MapEntry *MapEntries, int _index) : MapEntriesClone(MapEntries), index(_index) {}
+        MapIterator(MapEntry *MapEntries, int _index) : MapEntriesClone(MapEntries), index(_index) {}
         MapIterator(int _index) : MapEntriesClone(nullptr), index(_index) {}
         bool operator!=(const MapIterator &_MapIterator)
         {
@@ -37,9 +46,9 @@ private:
         {
             ++index;
         }
-        const tie &operator*()
+        auto operator*()
         {
-            return tie(MapEntriesClone[index].first, MapEntriesClone[index].second, index);
+            return std::tie(MapEntriesClone[index].first, MapEntriesClone[index].second, index);
         }
     };
     // map class members
@@ -62,25 +71,38 @@ public:
     {
         return count;
     }
-    V &operator[](K key)
+    MapEntry &operator[](K key)
     {
         for (int i = 0; i < size; i++)
         {
             if (MapEntries[i].first == key)
             {
-                return MapEntries[i].second;
+                return MapEntries[i];
             }
         }
         if (size == count)
         {
             size *= 2;
             MapEntry *newMapEntries = new MapEntry[size];
-            memcpy(newMapEntries, MapEntries, sizeof(MapEntries));
+            memcpy(newMapEntries, MapEntries, count * sizeof(MapEntry));
             delete[] MapEntries;
             MapEntries = newMapEntries;
         }
-        MapEntries[count++].first = key;
-        return MapEntries[count - 1].second;
+        MapEntries[count].first = key;
+        count++;
+        return MapEntries[count - 1];
+    }
+    bool Get(const K &key, V &value)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (MapEntries[i].first == key)
+            {
+                value = MapEntries[i].second;
+                return true;
+            }
+        }
+        return false;
     }
     MapIterator begin()
     {
