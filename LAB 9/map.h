@@ -4,11 +4,9 @@ class Map
 private:
     class MapEntry
     {
-    private:
+    public:
         K first;
         V second;
-
-    public:
         MapEntry(K key, V value) : first(key), second(value) {}
     };
 
@@ -23,5 +21,33 @@ public:
         count = 0;
         size = 1;
         MapEntries = new MapEntry[size];
+    }
+    ~Map()
+    {
+        delete[] MapEntries;
+    }
+    int Count()
+    {
+        return count;
+    }
+    V &operator[](K key)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (MapEntries[i].first == key)
+            {
+                return MapEntries[i].second;
+            }
+        }
+        if (size == count)
+        {
+            size *= 2;
+            MapEntry *newMapEntries = new MapEntry[size];
+            memcpy(newMapEntries, MapEntries, sizeof(MapEntries));
+            delete[] MapEntries;
+            MapEntries = newMapEntries;
+        }
+        MapEntries[count++].first = key;
+        return MapEntries[count - 1].second;
     }
 };
