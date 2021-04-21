@@ -9,7 +9,16 @@ private:
         V second;
         MapEntry(K key, V value) : first(key), second(value) {}
     };
+    class MapIterator
+    {
+    private:
+        MapEntry *MapEntriesClone;
+        int index;
 
+    public:
+        MapIterator(const MapEntry *MapEntries, int _index) : MapEntriesClone(MapEntries), index(_index) {}
+        MapIterator(int _index) : MapEntriesClone(nullptr), index(_index) {}
+    };
     // map class members
     MapEntry *MapEntries;
     int count;
@@ -49,5 +58,13 @@ public:
         }
         MapEntries[count++].first = key;
         return MapEntries[count - 1].second;
+    }
+    MapIterator begin()
+    {
+        return MapIterator(MapEntries, 0);
+    }
+    MapIterator end()
+    {
+        return MapIterator(count);
     }
 };
