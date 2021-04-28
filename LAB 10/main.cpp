@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+
+#include "vector.h"
 using namespace std;
 
 int main()
@@ -39,7 +41,7 @@ int main()
     MyIntVector.push_back(7);
 
     auto f = [](vector<int> vec) {
-        int max = 0;
+        auto max = 0;
         for (int i = 0; i < vec.size(); i++)
         {
             if (vec[i] > max)
