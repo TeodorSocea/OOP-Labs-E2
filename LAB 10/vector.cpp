@@ -48,5 +48,17 @@ bool MyVector::Delete(int index)
 
 void MyVector::Iterate(int (*fnc)(int &e1))
 {
-    for ()
+    for (int i = 0; i < Size; i++)
+    {
+        Elements[i] = fnc(Elements[i]);
+    }
+}
+
+void MyVector::Filter(bool (*fnc)(int &e1))
+{
+    for (int i = 0; i < Size; i++)
+    {
+        if (fnc(Elements[i]))
+            Delete(i);
+    }
 }
