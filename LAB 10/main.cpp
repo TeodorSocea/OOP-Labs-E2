@@ -8,16 +8,18 @@ using namespace std;
 
 int main()
 {
-    vector<string> MyVector;
-    MyVector.push_back("Ana");
-    MyVector.push_back("are");
-    MyVector.push_back("mere");
-    MyVector.push_back("si");
-    MyVector.push_back("banane");
-    MyVector.push_back("si");
-    MyVector.push_back("portocale");
+    //Ex1
 
-    sort(MyVector.begin(), MyVector.end(), [](string &s1, string &s2) {
+    vector<string> MyStringVector;
+    MyStringVector.push_back("Ana");
+    MyStringVector.push_back("are");
+    MyStringVector.push_back("mere");
+    MyStringVector.push_back("si");
+    MyStringVector.push_back("banane");
+    MyStringVector.push_back("si");
+    MyStringVector.push_back("portocale");
+
+    sort(MyStringVector.begin(), MyStringVector.end(), [](string &s1, string &s2) {
         if (s1.length() < s2.length())
             return 1;
         if (s1.length() == s2.length())
@@ -26,9 +28,9 @@ int main()
         return 0;
     });
 
-    for (int i = 0; i < MyVector.size(); i++)
+    for (int i = 0; i < MyStringVector.size(); i++)
     {
-        cout << MyVector[i] << " ";
+        cout << MyStringVector[i] << " ";
     }
     cout << "\n";
     vector<int> MyIntVector;
@@ -39,6 +41,8 @@ int main()
     MyIntVector.push_back(5);
     MyIntVector.push_back(6);
     MyIntVector.push_back(7);
+
+    //Ex2
 
     auto f = [](vector<int> vec) {
         auto max = 0;
@@ -51,4 +55,26 @@ int main()
     };
 
     cout << f(MyIntVector) << '\n';
+
+    //Ex3
+
+    MyVector array(20);
+
+    array.Add(1);
+    array.Add(1);
+    array.Add(1);
+    array.Add(1);
+    array.Add(1);
+    array.Add(1);
+    array.Add(1);
+
+    array.Iterate([](int &e1) {
+        return e1 + 1;
+    });
+
+    for (int i = 0; i < array.getSize(); i++)
+    {
+        cout << array[i] << " ";
+    }
+    cout << '\n';
 }
