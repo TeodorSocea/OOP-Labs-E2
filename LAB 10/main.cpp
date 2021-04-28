@@ -7,7 +7,6 @@ using namespace std;
 int main()
 {
     vector<string> MyVector;
-
     MyVector.push_back("Ana");
     MyVector.push_back("are");
     MyVector.push_back("mere");
@@ -29,4 +28,25 @@ int main()
     {
         cout << MyVector[i] << " ";
     }
+    cout << "\n";
+    vector<int> MyIntVector;
+    MyIntVector.push_back(1);
+    MyIntVector.push_back(2);
+    MyIntVector.push_back(3);
+    MyIntVector.push_back(4);
+    MyIntVector.push_back(5);
+    MyIntVector.push_back(6);
+    MyIntVector.push_back(7);
+
+    auto f = [](vector<int> vec) {
+        int max = 0;
+        for (int i = 0; i < vec.size(); i++)
+        {
+            if (vec[i] > max)
+                max = vec[i];
+        }
+        return max;
+    };
+
+    cout << f(MyIntVector) << '\n';
 }
