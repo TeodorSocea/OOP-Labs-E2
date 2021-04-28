@@ -77,4 +77,14 @@ int main()
         cout << array[i] << " ";
     }
     cout << '\n';
+
+    array.Filter([](int &e1) {
+        return e1 % 2 == 0;
+    });
+
+    for (int i = 0; i < array.getSize(); i++)
+    {
+        cout << array[i] << " ";
+    }
+    cout << '\n';
 }

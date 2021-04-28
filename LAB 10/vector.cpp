@@ -59,6 +59,9 @@ void MyVector::Filter(bool (*fnc)(int &e1))
     for (int i = 0; i < Size; i++)
     {
         if (fnc(Elements[i]))
+        {
             Delete(i);
+            i--;
+        }
     }
 }
