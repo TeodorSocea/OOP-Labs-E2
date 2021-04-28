@@ -37,4 +37,6 @@ public:
     ~MyVector();
     int &operator[](int);
     int getSize();
+    void Iterate(int (*fnc)(int &));
+    void Filter(bool (*fnc)(int &));
 };
