@@ -52,7 +52,6 @@ private:
 
     int Size; // cate elemente sunt in lista
 
-public:
     template <class T>
     class IndexOutOfBounds : public ArrayException
     {
@@ -102,6 +101,8 @@ public:
             return " << Here!\n";
         }
     };
+
+public:
     Array() // Lista nu e alocata, Capacity si Size = 0
     {
         Capacity = 0;
@@ -176,7 +177,7 @@ public:
     const Array<T> &Delete(int index) // sterge un element de pe pozitia index, returneaza this. Daca index e invalid arunca o exceptie
     {
         if (index < 0 || index >= Size)
-            throw IndexOutOfBounds();
+            throw IndexOutOfBounds<T>(this, index);
         for (int i = index; i < Size - 1; i++)
             *(List[i]) = *(List[i + 1]);
         Size--;
