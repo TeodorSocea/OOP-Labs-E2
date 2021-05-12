@@ -2,6 +2,13 @@
 #include <exception>
 #include <string>
 #include <stdlib.h>
+#include <sstream>
+class ArrayException : public std::exception
+{
+public:
+    virtual const char *what() const throw() = 0;
+};
+
 class Compare
 
 {
@@ -45,11 +52,6 @@ private:
 
     int Size; // cate elemente sunt in lista
 
-    class ArrayException : public std::exception
-    {
-        virtual const char *what() const throw() = 0;
-    };
-
     template <class T>
     class IndexOutOfBounds : public ArrayException
     {
@@ -61,8 +63,15 @@ private:
 
         const char *what() const throw()
         {
-            std::string Message = "Index out of bounds at " + itoa(adress) + " and index " + itoa(index);
-            return Message;
+
+            const void *address = static_cast<const void *>(adress);
+            std::stringstream ss;
+            ss << address;
+            std::string name = ss.str();
+
+            std::string Message = "Index out of bounds at " + name + " and index " + to_string(index);
+            cout << Message.c_str();
+            return Message.c_str();
         }
     };
 
@@ -125,11 +134,33 @@ public:
         }
     }
 
-    T &operator[](int index); // arunca exceptie daca index este out of range
-
-    const Array<T> &operator+=(const T &newElem); // adauga un element de tipul T la sfarsitul listei si returneaza this
-
-    const Array<T> &Insert(int index, const T &newElem); // adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
+    T &operator[](int index) // arunca exceptie daca index este out of range
+    {
+        if (index < 0 || index >= Size)
+            throw IndexOutOfBounds<T>(this, index);
+        return *(List[index]);
+    }
+    const Array<T> &operator+=(const T &newElem) // adauga un element de tipul T la sfarsitul listei si returneaza this
+    {
+        if (Size == Capacity)
+            throw CapacityExceeded();
+        *(List[Size++]) = newElem;
+        return *this;
+    }
+    const Array<T> &Insert(int index, const T &newElem) // adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
+    {
+        if (index < 0 || index >= Size)
+            throw IndexOutOfBounds();
+        if (Size == Capacity)
+            throw CapacityExceeded();
+        for (int i = Size; i > index; i--)
+        {
+            *(List[i]) = *(List[i - 1]);
+        }
+        *(List[index]) = newElem;
+        Size++;
+        return *this;
+    }
 
     const Array<T> &Insert(int index, const Array<T> otherArray); // adauga o lista pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
 
