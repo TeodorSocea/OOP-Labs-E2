@@ -173,7 +173,15 @@ public:
 
     const Array<T> &Insert(int index, const Array<T> otherArray); // adauga o lista pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
 
-    const Array<T> &Delete(int index); // sterge un element de pe pozitia index, returneaza this. Daca index e invalid arunca o exceptie
+    const Array<T> &Delete(int index) // sterge un element de pe pozitia index, returneaza this. Daca index e invalid arunca o exceptie
+    {
+        if (index < 0 || index >= Size)
+            throw IndexOutOfBounds();
+        for (int i = index; i < Size - 1; i++)
+            *(List[i]) = *(List[i + 1]);
+        Size--;
+        return *this;
+    }
 
     bool operator=(const Array<T> &otherArray);
 
@@ -197,9 +205,15 @@ public:
 
     int Find(const T &elem, Compare *comparator); //  cauta un element folosind un comparator
 
-    int GetSize();
+    int GetSize()
+    {
+        return Size;
+    }
 
-    int GetCapacity();
+    int GetCapacity()
+    {
+        return Capacity;
+    }
 
     ArrayIterator<T> GetBeginIterator();
 
