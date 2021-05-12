@@ -52,6 +52,7 @@ private:
 
     int Size; // cate elemente sunt in lista
 
+public:
     template <class T>
     class IndexOutOfBounds : public ArrayException
     {
@@ -69,9 +70,11 @@ private:
             ss << address;
             std::string name = ss.str();
 
-            std::string Message = "Index out of bounds at " + name + " and index " + to_string(index);
-            cout << Message.c_str();
-            return Message.c_str();
+            std::string Message = "Index out of bounds at " + name + " and index " + to_string(index) + ".";
+
+            cout << Message;
+
+            return " << Here!\n";
         }
     };
 
@@ -87,12 +90,18 @@ private:
         const char *what() const throw()
 
         {
-            std::string Message = "Capacity exceeded at " + itoa(adress) + " with capacity " + itoa(size);
-            return Message;
+            const void *address = static_cast<const void *>(adress);
+            std::stringstream ss;
+            ss << address;
+            std::string name = ss.str();
+
+            std::string Message = "Capacity exceeded at " + name + " with size " + to_string(size) + ".";
+
+            cout << Message;
+
+            return " << Here!\n";
         }
     };
-
-public:
     Array() // Lista nu e alocata, Capacity si Size = 0
     {
         Capacity = 0;
@@ -143,16 +152,16 @@ public:
     const Array<T> &operator+=(const T &newElem) // adauga un element de tipul T la sfarsitul listei si returneaza this
     {
         if (Size == Capacity)
-            throw CapacityExceeded();
+            throw CapacityExceeded<T>(this, Capacity);
         *(List[Size++]) = newElem;
         return *this;
     }
     const Array<T> &Insert(int index, const T &newElem) // adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
     {
         if (index < 0 || index >= Size)
-            throw IndexOutOfBounds();
+            throw IndexOutOfBounds<T>(this, index);
         if (Size == Capacity)
-            throw CapacityExceeded();
+            throw CapacityExceeded<T>(this, Capacity);
         for (int i = Size; i > index; i--)
         {
             *(List[i]) = *(List[i - 1]);

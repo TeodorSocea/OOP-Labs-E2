@@ -12,6 +12,6 @@ int main()
     }
     catch (ArrayException &e)
     {
-        cout << e.what();
+        cout << "Exception: " << e.what();
     }
 }
