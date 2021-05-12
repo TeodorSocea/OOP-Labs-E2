@@ -1,3 +1,38 @@
+
+#include <exception>
+#include <string>
+class ArrayException : public std::exception
+{
+    virtual const char *what() const throw() = 0;
+};
+template <class T>
+class IndexOutOfBounds : public ArrayException
+{
+    Array<T> *adress;
+    int index;
+
+public:
+    IndexOutOfBounds(Array<T> *_adress, int _index) : adress{_adress}, index{_index} {}
+    std::string Message = "Index out of bounds at " + itoa(adress) + " and index " + itoa(index);
+    const char *what() const throw()
+    {
+
+        return Message;
+    }
+};
+class CapacityExceeded : public ArrayException
+{
+public:
+    CapacityExceeded() = default;
+
+    const char *what() const throw()
+
+    {
+
+        return "Capacity exceeded!";
+    }
+};
+
 class Compare
 
 {
