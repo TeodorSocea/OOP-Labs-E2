@@ -1,6 +1,7 @@
 
 #include <exception>
 #include <string>
+#include <stdlib.h>
 class ArrayException : public std::exception
 {
     virtual const char *what() const throw() = 0;
@@ -83,13 +84,46 @@ private:
     int Size; // cate elemente sunt in lista
 
 public:
-    Array(); // Lista nu e alocata, Capacity si Size = 0
+    Array() // Lista nu e alocata, Capacity si Size = 0
+    {
+        Capacity = 0;
+        Size = 0;
+        List = nullptr;
+    }
+    ~Array() // destructor
+    {
+        for (int i = 0; i < Capacity; i++)
+        {
+            delete List[i];
+        }
+        delete[] List;
+    }
+    Array(int capacity) // Lista e alocata cu 'capacity' elemente
+    {
+        Size = 0;
+        Capacity = capacity;
+        List = new T *[Capacity];
+        for (int i = 0; i < Capacity; i++)
+        {
+            List[i] = new T;
+        }
+    }
+    Array(const Array<T> &otherArray) // constructor de copiere
+    {
+        Capacity = otherArray.Capacity;
+        Size = otherArray.Size;
+        List = new T *[Capacity];
 
-    ~Array(); // destructor
+        for (int i = 0; i < Capacity; i++)
+        {
+            List[i] = new T;
+        }
 
-    Array(int capacity); // Lista e alocata cu 'capacity' elemente
-
-    Array(const Array<T> &otherArray); // constructor de copiere
+        for (int i = 0; i < Size; i++)
+        {
+            *(List[i]) = *(otherArray.List[i]);
+        }
+    }
 
     T &operator[](int index); // arunca exceptie daca index este out of range
 
