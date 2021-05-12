@@ -13,23 +13,28 @@ class IndexOutOfBounds : public ArrayException
 
 public:
     IndexOutOfBounds(Array<T> *_adress, int _index) : adress{_adress}, index{_index} {}
-    std::string Message = "Index out of bounds at " + itoa(adress) + " and index " + itoa(index);
+
     const char *what() const throw()
     {
-
+        std::string Message = "Index out of bounds at " + itoa(adress) + " and index " + itoa(index);
         return Message;
     }
 };
+
+template <class T>
 class CapacityExceeded : public ArrayException
 {
+    Array<T> *adress;
+    int size;
+
 public:
-    CapacityExceeded() = default;
+    CapacityExceeded(Array<T> *_adress, int _size) : adress{_adress}, size{_size} {}
 
     const char *what() const throw()
 
     {
-
-        return "Capacity exceeded!";
+        std::string Message = "Capacity exceeded at " + itoa(adress) + " with capacity " + itoa(size);
+        return Message;
     }
 };
 
