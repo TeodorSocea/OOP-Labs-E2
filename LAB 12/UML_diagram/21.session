@@ -1,0 +1,18 @@
+window_sizes 1920 1027 289 1626 875 104
+
+diagrams
+  active  classdiagram_ref 128021 // LAB 12
+    1615 838 100 A4 0 0
+end
+show_stereotypes
+selected deploymentview_ref 128021 // LAB 12
+open
+  class_ref 128405 // Contact
+  class_ref 128533 // Cunoscut
+  class_ref 128661 // Prieten
+  class_ref 128789 // Coleg
+  class_ref 128917 // type
+  class_ref 129045 // Agenda
+  deploymentview_ref 128021 // LAB 12
+end
+end
